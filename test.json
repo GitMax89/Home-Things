@@ -1,0 +1,20 @@
+{
+  "lista": [
+    {
+      "product": "banane",
+      "id": 1
+    },
+    {
+      "product": "prova",
+      "id": 2
+    },
+    {
+      "product": "ciliege",
+      "id": 3
+    },
+    {
+      "product": "test",
+      "id": 4
+    }
+  ]
+}
