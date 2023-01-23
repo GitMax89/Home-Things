@@ -39,7 +39,7 @@ function addItem(){
 
 
 async function displayStorage(){
-    const apiURL = fetch('http://192.168.178.105:3000/lista')
+    const apiURL = fetch('http://vimaxnas.ddns.net:3000/lista')
     // gestisci il successo
     .then(response => response.json())  // converti a json
     .then(json => {
@@ -62,7 +62,7 @@ function writeStorage(){
         product: `${input.value}`
     }
 
-    fetch('http://192.168.178.105:3000/lista', {
+    fetch('http://vimaxnas.ddns.net:3000/lista', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
