@@ -74,7 +74,7 @@ displayStorage().then(json => {
     for (i=0;i<json.length;i++){
         let v = json[`${i}`].product
         createItemsList(v)
-        location.reload();
+        setTimeout("location.reload(true);", 10000);
     }
 })
 

@@ -1,10 +1,6 @@
 {
   "lista": [
     {
-      "product": "Pasta",
-      "id": 1
-    },
-    {
       "product": "Pane",
       "id": 2
     },
