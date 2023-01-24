@@ -58,7 +58,7 @@ function addItem(){
 
 // mostra gli elementi in lista
 async function displayStorage(){
-    const apiURL = fetch('http://home-things.cloud:3000/lista')
+    const apiURL = fetch('http://vimaxnas.ddns.net:3000/lista')
     // gestisci il successo
     .then(response => response.json())  // converto in json
     .then(json => {
@@ -83,7 +83,7 @@ function writeStorage(value){
         product: `${value}`
     }
 
-    fetch('http://home-things.cloud:3000/lista', {
+    fetch('http://vimaxnas.ddns.net:3000/lista', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -113,7 +113,7 @@ function removeItems(value){
             a = json[`${i}`]
             if (value == a.product){
                 let id = a.id
-                fetch('http://home-things.cloud:3000/lista/' + id, {
+                fetch('http://vimaxnas.ddns.net:3000/lista/' + id, {
                     method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()
@@ -139,7 +139,7 @@ function removeAllItems(){
                     p.remove();
                 }, 3000)
             } else {
-                fetch('http://home-things.cloud:3000/lista/' + a, {
+                fetch('http://vimaxnas.ddns.net:3000/lista/' + a, {
                 method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()

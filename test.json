@@ -1,12 +1,8 @@
 {
   "lista": [
     {
-      "product": "test",
+      "product": "banane",
       "id": 1
-    },
-    {
-      "product": "pere",
-      "id": 2
     }
   ]
 }
