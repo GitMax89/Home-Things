@@ -9,6 +9,7 @@ let elimina = document.getElementById('cancella-lista')
 // add eventlistner
 button.addEventListener('click', addItem)
 elimina.addEventListener('click', removeAllItems)
+document.addEventListener('DOMContentLoaded', displayStorage);
 // document.addEventListener('DOMContentLoaded', displayStorage);
 
 
@@ -46,13 +47,11 @@ function addItem(){
     let value = input.value
     if (value === ''){
         createItemsList(value)
-        location.reload();
     }
     else {
         createItemsList(value)
         writeStorage(value)
         checkItemsInList(value)
-        location.reload();
     }
 
 }
@@ -74,7 +73,6 @@ displayStorage().then(json => {
     for (i=0;i<json.length;i++){
         let v = json[`${i}`].product
         createItemsList(v)
-        setTimeout("location.reload(true);", 10000);
     }
 })
 
@@ -152,3 +150,5 @@ function removeAllItems(){
         }
     })
 }
+
+// setTimeout("location.reload(true);", 10000);
