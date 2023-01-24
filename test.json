@@ -1,3 +1,36 @@
 {
-  "lista": []
+  "lista": [
+    {
+      "product": "Pasta",
+      "id": 1
+    },
+    {
+      "product": "Pane",
+      "id": 2
+    },
+    {
+      "product": "Affettato ",
+      "id": 3
+    },
+    {
+      "product": "Patate",
+      "id": 4
+    },
+    {
+      "product": "Carne",
+      "id": 5
+    },
+    {
+      "product": "Latte",
+      "id": 6
+    },
+    {
+      "product": "Mozzarelle ",
+      "id": 7
+    },
+    {
+      "product": "Uova",
+      "id": 8
+    }
+  ]
 }

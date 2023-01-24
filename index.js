@@ -149,3 +149,6 @@ function removeAllItems(){
         }
     })
 }
+
+// refresh page
+location.reload();
