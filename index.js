@@ -145,6 +145,7 @@ function removeAllItems(){
                 .then(res => res.json()) // or res.json()
                 .then(res => console.log(res))
             }
+            location.reload();
         }
     })
 }
