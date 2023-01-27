@@ -49,9 +49,9 @@ function addItem(){
         createItemsList(value)
     }
     else {
+        checkItemsInList(value)
         createItemsList(value)
         writeStorage(value)
-        checkItemsInList(value)
     }
 
 }
@@ -59,7 +59,7 @@ function addItem(){
 
 // mostra gli elementi in lista
 async function displayStorage(){
-    const apiURL = fetch('http://vimaxnas.ddns.net:3000/lista')
+    const apiURL = fetch('https://vimaxnas.ddns.net:3000/lista')
     // gestisci il successo
     .then(response => response.json())  // converto in json
     .then(json => {
@@ -84,7 +84,7 @@ function writeStorage(value){
         product: `${value}`
     }
 
-    fetch('http://vimaxnas.ddns.net:3000/lista', {
+    fetch('https://vimaxnas.ddns.net:3000/lista', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -99,9 +99,16 @@ function checkItemsInList(value){
     displayStorage().then(json => {
         for (i=0;i<json.length;i++){
             x.push(json[`${i}`].product)
-            if (value == json[`${i}`].product){
-                alert(`${value} è già presente in lista`)
-            }
+            
+            let num = json.length
+            let id = json[`${num}`].num
+            fetch('https://vimaxnas.ddns.net:3000/lista/' + id, {
+                method: 'DELETE',
+            })
+            .then(res => res.json()) // or res.json()
+            .then(res => console.log(res))
+
+            alert(`${value} è già in lista.. rimosso!`)
         }
     })
 }
@@ -114,7 +121,7 @@ function removeItems(value){
             a = json[`${i}`]
             if (value == a.product){
                 let id = a.id
-                fetch('http://vimaxnas.ddns.net:3000/lista/' + id, {
+                fetch('https://vimaxnas.ddns.net:3000/lista/' + id, {
                     method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()
@@ -140,13 +147,12 @@ function removeAllItems(){
                     p.remove();
                 }, 3000)
             } else {
-                fetch('http://vimaxnas.ddns.net:3000/lista/' + a, {
+                fetch('https://vimaxnas.ddns.net:3000/lista/' + a, {
                 method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()
                 .then(res => console.log(res))
             }
-            location.reload();
         }
     })
 }
