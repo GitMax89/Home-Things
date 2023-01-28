@@ -22,7 +22,10 @@ function createItemsList(value){
         p.style.textDecoration = 'line-through'
     })
     p.addEventListener('dblclick', function(){
-        removeItems(value)
+        removeItems(value);
+        setTimeout(() => {
+            document.location.reload();
+        }, 1000);
     })
     if(value === ''){
         e.innerHTML = 'Non hai inserito alcun elemento, perfavore inserisci un elemento'
@@ -46,11 +49,17 @@ function addItem(){
     let value = input.value
     if (value === ''){
         createItemsList(value)
+        setTimeout(() => {
+            document.location.reload();
+        }, 1000);
     }
     else {
         // checkItemsInList(value)
         createItemsList(value)
         writeStorage(value)
+        setTimeout(() => {
+            document.location.reload();
+        }, 1000);
     }
 
 }
