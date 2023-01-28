@@ -10,9 +10,9 @@ nav.navbar{
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
-    max-width: 800px;
-    margin-right:auto;
-    margin-left:auto;
+    max-width: 600px;
+    margin-right:5%;
+    margin-left:5%;
 }
 a.navbar-brand{
     color: aliceblue;
@@ -27,28 +27,19 @@ section.section-center{
     background-color: aliceblue;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
     border-radius: 10px;
     height: fit-content;
     text-align: center;
     padding: 20px;
-    max-width: 800px;
-    margin-right:auto;
-    margin-left:auto;
+    max-width: 600px;
+    margin-right:5%;
+    margin-left:5%;
 }
 form.shopping-form{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 0px;
     margin-right: 0px;
-}
-input#text{
-    width: 77%;
-    border-radius: 10px;
-}
-button.btn{
-    border-radius: 10px;
 }
 
 /* element list */
@@ -63,4 +54,34 @@ p {
 button#cancella-lista{
     margin-top: 20px;
 }
+
+button#spesa-button{
+    position: absolute;
+    top: 0;
+    border-radius: 5px;
+    right: 0px;
+    z-index: 2;
+    border: none;
+    top: 0px;
+    height: 30px;
+    cursor: pointer;
+    color: white;
+    background-color: #1e90ff;
+    transform: translateX(2px);
+}
+
+input#text-input{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    outline: none;
+    height: 30px;
+    border-radius: 5px;
+}
+
+div.div-form{
+    position: relative;
+}
+
+
 

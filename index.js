@@ -10,7 +10,6 @@ let elimina = document.getElementById('cancella-lista')
 button.addEventListener('click', addItem)
 elimina.addEventListener('click', removeAllItems)
 document.addEventListener('DOMContentLoaded', displayStorage);
-// document.addEventListener('DOMContentLoaded', displayStorage);
 
 
 // crea il template dell'elemento HTML in lista e ne verifica il contenuto
@@ -49,7 +48,7 @@ function addItem(){
         createItemsList(value)
     }
     else {
-        checkItemsInList(value)
+        // checkItemsInList(value)
         createItemsList(value)
         writeStorage(value)
     }
@@ -59,7 +58,7 @@ function addItem(){
 
 // mostra gli elementi in lista
 async function displayStorage(){
-    const apiURL = fetch('https://vimaxnas.ddns.net:3000/lista')
+    const apiURL = fetch('https://192.168.178.99:3000/lista')
     // gestisci il successo
     .then(response => response.json())  // converto in json
     .then(json => {
@@ -84,7 +83,7 @@ function writeStorage(value){
         product: `${value}`
     }
 
-    fetch('https://vimaxnas.ddns.net:3000/lista', {
+    fetch('https://192.168.178.99:3000/lista', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -102,7 +101,7 @@ function checkItemsInList(value){
             
             let num = json.length
             let id = json[`${num}`].num
-            fetch('https://vimaxnas.ddns.net:3000/lista/' + id, {
+            fetch('https://192.168.178.99:3000/lista/' + id, {
                 method: 'DELETE',
             })
             .then(res => res.json()) // or res.json()
@@ -121,7 +120,7 @@ function removeItems(value){
             a = json[`${i}`]
             if (value == a.product){
                 let id = a.id
-                fetch('https://vimaxnas.ddns.net:3000/lista/' + id, {
+                fetch('https://192.168.178.99:3000/lista/' + id, {
                     method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()
@@ -147,7 +146,7 @@ function removeAllItems(){
                     p.remove();
                 }, 3000)
             } else {
-                fetch('https://vimaxnas.ddns.net:3000/lista/' + a, {
+                fetch('https://192.168.178.99:3000/lista/' + a, {
                 method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()
