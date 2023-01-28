@@ -58,7 +58,7 @@ function addItem(){
 
 // mostra gli elementi in lista
 async function displayStorage(){
-    const apiURL = fetch('https://192.168.178.99:3000/lista')
+    const apiURL = fetch('https://home-things.cloud:3000/lista')
     // gestisci il successo
     .then(response => response.json())  // converto in json
     .then(json => {
@@ -83,7 +83,7 @@ function writeStorage(value){
         product: `${value}`
     }
 
-    fetch('https://192.168.178.99:3000/lista', {
+    fetch('https://home-things.cloud:3000/lista', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -101,7 +101,7 @@ function checkItemsInList(value){
             
             let num = json.length
             let id = json[`${num}`].num
-            fetch('https://192.168.178.99:3000/lista/' + id, {
+            fetch('https://home-things.cloud:3000/lista/' + id, {
                 method: 'DELETE',
             })
             .then(res => res.json()) // or res.json()
@@ -120,7 +120,7 @@ function removeItems(value){
             a = json[`${i}`]
             if (value == a.product){
                 let id = a.id
-                fetch('https://192.168.178.99:3000/lista/' + id, {
+                fetch('https://home-things.cloud:3000/lista/' + id, {
                     method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()
@@ -146,7 +146,7 @@ function removeAllItems(){
                     p.remove();
                 }, 3000)
             } else {
-                fetch('https://192.168.178.99:3000/lista/' + a, {
+                fetch('https://home-things.cloud:3000/lista/' + a, {
                 method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()
