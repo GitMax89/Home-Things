@@ -122,7 +122,6 @@ function checkItemsInList(value){
 }
 
 // rimuovo i singoli elementi
-// let c = 'pera'
 function removeItems(value){
     displayStorage().then(json => {
         for (i=0;i<json.length;i++){
@@ -144,9 +143,10 @@ function removeAllItems(){
     let x = []
     displayStorage().then(json => {
         for (i=0;i<json.length;i++){
-            let a = json[`${i}`].id
-            x.push(a)
-            if (x < 0){
+        let a = json[`${i}`].id
+        x.push(a)
+        }
+            if (x.length == 0){
                 let p = document.createElement('h1')
                 p.innerHTML = 'lista vuota'
                 p.style.color = 'red'
@@ -155,11 +155,16 @@ function removeAllItems(){
                     p.remove();
                 }, 3000)
             } else {
+                for (i=0;i<json.length;i++){
+                    let a = json[`${i}`].id
                 fetch('https://home-things.cloud:3000/lista/' + a, {
                 method: 'DELETE',
                 })
                 .then(res => res.json()) // or res.json()
                 .then(res => console.log(res))
+                setTimeout(() => {
+                    document.location.reload();
+                }, 1000);
             }
         }
     })
