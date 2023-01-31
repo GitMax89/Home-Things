@@ -1,29 +1,25 @@
-function showTime(){
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-    var session = "AM";
-    
-    if(h == 0){
-        h = 12;
+function currentTime() {
+    var date = new Date(); /* creating object of Date class */
+    var day = date.getDate()
+    var month = date.getMonth() + 1
+    var year = date.getFullYear()
+    var hour = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+    hour = updateTime(hour);
+    min = updateTime(min);
+    sec = updateTime(sec);
+    document.getElementById("clock").innerText = `${day}/${month}/${year} ${hour}:${min}:${sec}`;
+      var t = setTimeout(function(){ currentTime() }, 1000);
+  }
+  
+  function updateTime(k) {
+    if (k < 10) {
+      return "0" + k;
     }
-    
-    if(h > 12){
-        h = h - 12;
-        session = "PM";
+    else {
+      return k;
     }
-    
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-    
-    var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("MyClockDisplay").innerText = time;
-    document.getElementById("MyClockDisplay").textContent = time;
-    
-    setTimeout(showTime, 1000);
-    
-}
-
-showTime();
+  }
+  
+  currentTime();

@@ -11,24 +11,29 @@ button.addEventListener('click', addItem)
 elimina.addEventListener('click', removeAllItems)
 document.addEventListener('DOMContentLoaded', displayStorage);
 
-
 // crea il template dell'elemento HTML in lista e ne verifica il contenuto
 function createItemsList(value){
     let e = document.createElement('h2')
     let p = document.createElement('p')
     p.setAttribute('id', `${value}`)
+    p.setAttribute('class', 'effect')
     p.innerHTML = value
     p.addEventListener('click', function(){
         p.style.textDecoration = 'line-through'
+        p.style.color = 'red'
     })
     p.addEventListener('dblclick', function(){
+        let p = document.createElement('h1')
+        p.innerHTML = 'elimino elemento'
+        p.style.color = 'green'
+        div.appendChild(p)
         removeItems(value);
         setTimeout(() => {
             document.location.reload();
         }, 1000);
     })
     if(value === ''){
-        e.innerHTML = 'Non hai inserito alcun elemento, perfavore inserisci un elemento'
+        e.innerHTML = 'Impossibile inoltrare, perfavore inserisci un elemento'
         e.style.color = 'red'
         div.appendChild(e)
         setTimeout(function(){
@@ -91,35 +96,14 @@ function writeStorage(value){
     let data = {
         product: `${value}`
     }
-
     fetch('https://home-things.cloud:3000/lista', {
         method: "POST",
         body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
     })
     .then(response => response.json())
-    .then(response => console.log(response.json()));
-}
+}        
 
-// verifico i duplicati in lsta
-function checkItemsInList(value){
-    let x = []
-    displayStorage().then(json => {
-        for (i=0;i<json.length;i++){
-            x.push(json[`${i}`].product)
-            
-            let num = json.length
-            let id = json[`${num}`].num
-            fetch('https://home-things.cloud:3000/lista/' + id, {
-                method: 'DELETE',
-            })
-            .then(res => res.json()) // or res.json()
-            .then(res => console.log(res))
-
-            alert(`${value} è già in lista.. rimosso!`)
-        }
-    })
-}
 
 // rimuovo i singoli elementi
 function removeItems(value){
